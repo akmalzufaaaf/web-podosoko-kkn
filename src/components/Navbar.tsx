@@ -95,7 +95,7 @@ export default function Navbar() {
       <nav
         className={`w-full transition-all duration-300 ease-in-out border-b ${
           scrolled 
-            ? "py-3 bg-white/90 backdrop-blur-md shadow-sm border-stone-100" 
+            ? "py-3 bg-white shadow-sm border-stone-200" 
             : "py-4 bg-transparent border-transparent"
         }`}
       >

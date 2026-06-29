@@ -47,7 +47,7 @@ export default function StatisticSummary({ data }: { data?: StatisticItem[] }) {
               key={stat._id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="flex flex-col items-center justify-center text-center py-16 px-4 group hover:bg-stone-50 transition-colors"
             >

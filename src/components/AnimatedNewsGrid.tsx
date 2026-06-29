@@ -31,7 +31,7 @@ export default function AnimatedNewsGrid({ articles }: { articles: Article[] }) 
     <section className="relative overflow-hidden w-full bg-stone-50" id="kabar-terbaru">
       
       {/* Layer 2 (The Floor): The Noise Background */}
-      <div className="noise-bg absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-overlay"></div>
+      <div className="noise-bg absolute inset-0 z-0 opacity-20 pointer-events-none"></div>
       
       {/* Layer 3 (The Content): Elevated Z-Index to protect interactivity */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
@@ -59,7 +59,7 @@ export default function AnimatedNewsGrid({ articles }: { articles: Article[] }) 
                 key={article._id}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.7, delay: index * 0.15, ease: "easeOut" }}
                 className="group flex flex-col h-full bg-transparent px-6 lg:px-10 pt-16 pb-16 lg:pb-20"
               >
