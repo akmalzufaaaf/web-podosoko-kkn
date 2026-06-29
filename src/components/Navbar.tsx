@@ -40,10 +40,10 @@ const dropdownVariants = {
     y: 0,
     scale: 1,
     transition: {
-      type: "spring",
-      stiffness: 400,
-      damping: 30,
-      staggerChildren: 0.04,
+      type: "spring" as const,
+      stiffness: 300,
+      damping: 20,
+      staggerChildren: 0.05,
     },
   },
   exit: {
@@ -64,7 +64,7 @@ const mobileMenuVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { type: "spring", stiffness: 350, damping: 35 },
+    transition: { type: "spring" as const, stiffness: 300, damping: 30 },
   },
   exit: {
     opacity: 0,
