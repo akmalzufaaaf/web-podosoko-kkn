@@ -1,65 +1,60 @@
-import Image from "next/image";
+import { client } from '../../sanity/lib/client'
+import { urlForImage } from '../../sanity/lib/image'
+import HeroSection from '@/components/HeroSection'
+import AboutSection from '@/components/AboutSection'
+import AnimatedNewsGrid from '@/components/AnimatedNewsGrid'
+import StatisticSummary from '@/components/StatisticSummary'
+import AgendaDesa from '@/components/AgendaDesa'
 
-export default function Home() {
+// 1. GROQ Queries
+const PROFIL_QUERY = `*[_type == "profilDesa"][0] { title, sejarah, visiMisi, heroImage, aboutImages }`
+const LATEST_ARTICLES_QUERY = `*[_type == "article"] | order(publishedAt desc)[0...3] { _id, title, slug, publishedAt, coverImage, kategori, body }`
+const LATEST_AGENDA_QUERY = `*[_type == "agenda"] | order(eventDate asc)[0...3] { _id, eventName, eventDate, location }`
+const STATISTIC_QUERY = `*[_type == "statistic"] { _id, label, count, category }`
+
+// ISR Fetch Options
+const fetchOptions = { next: { revalidate: 3600 } }
+
+export default async function HomePage() {
+  // 2. Parallel Fetching with Promise.all
+  const [profil, rawArticles, agendas, statistics] = await Promise.all([
+    client.fetch(PROFIL_QUERY, {}, fetchOptions),
+    client.fetch(LATEST_ARTICLES_QUERY, {}, fetchOptions),
+    client.fetch(LATEST_AGENDA_QUERY, {}, fetchOptions),
+    client.fetch(STATISTIC_QUERY, {}, fetchOptions),
+  ])
+
+  // Resolve Image URLs on the server to keep Client Components clean and SSR-safe
+  const heroImageUrl = profil?.heroImage 
+    ? urlForImage(profil.heroImage).url() 
+    : "https://images.unsplash.com/photo-1596404768315-779872e4b9c1?q=80&w=2000&auto=format&fit=crop"
+
+  const aboutImagesUrls = profil?.aboutImages 
+    ? profil.aboutImages.map((img: any) => urlForImage(img).url()) 
+    : []
+
+  const articles = rawArticles?.map((article: any) => ({
+    ...article,
+    excerpt: article.body,
+    imageUrl: article.coverImage ? urlForImage(article.coverImage).url() : null
+  })) || []
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    <main className="min-h-screen bg-white font-sans selection:bg-emerald-700 selection:text-white pb-0">
+      {/* 1. The "Higherlife" Hero (Client Component with Framer Motion) */}
+      <HeroSection title={profil?.title} imageUrl={heroImageUrl} />
+
+      {/* 1.5. The Editorial About Section */}
+      <AboutSection images={aboutImagesUrls} />
+
+      {/* 2. Standalone Statistics Section (Moved up here) */}
+      <StatisticSummary data={statistics} />
+
+      {/* 3. Standalone Kabar Terbaru Section */}
+      <AnimatedNewsGrid articles={articles} />
+
+      {/* 4. Standalone Agenda Section */}
+      <AgendaDesa agendas={agendas || []} />
+    </main>
+  )
 }
