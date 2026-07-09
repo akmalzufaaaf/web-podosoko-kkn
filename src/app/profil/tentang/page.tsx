@@ -72,7 +72,7 @@ export default async function ProfilSejarahPage() {
             Dokumen Resmi Sejarah, Visi, Misi, dan Struktur Organisasi Desa Podosoko.
           </p>
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-stone-900 mt-4 md:mt-0">
-            KEC. CANDIMULYO — MAGELANG
+            KEC. SAWANGAN — MAGELANG
           </p>
         </div>
       </section>

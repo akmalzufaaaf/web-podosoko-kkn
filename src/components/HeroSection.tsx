@@ -32,7 +32,7 @@ export default function HeroSection({ title, imageUrl }: { title?: string, image
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
           className="text-6xl md:text-8xl lg:text-[7rem] font-bold font-serif text-white mb-8 tracking-tight leading-[1.05] drop-shadow-2xl"
         >
-          {title || 'Sistem Informasi Desa Podosoko'}
+          Podosoko
         </motion.h1>
         
         <motion.p 
@@ -50,7 +50,7 @@ export default function HeroSection({ title, imageUrl }: { title?: string, image
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <a 
-            href="#explore"
+            href="#tentang-desa"
             className="inline-flex items-center justify-center px-10 py-5 bg-white text-stone-950 font-sans font-bold tracking-[0.15em] uppercase text-sm rounded-full hover:bg-stone-200 transition-colors duration-300 shadow-2xl"
           >
             Jelajahi Desa

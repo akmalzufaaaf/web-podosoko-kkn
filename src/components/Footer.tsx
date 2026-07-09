@@ -14,7 +14,7 @@ export default function Footer() {
               Desa <span className="italic text-emerald-700">Podosoko</span>
             </h2>
             <p className="text-stone-600 text-sm leading-relaxed max-w-sm">
-              Website resmi Pemerintah Desa Podosoko, Kecamatan Candimulyo, Kabupaten Magelang, Jawa Tengah. Platform digital untuk transparansi informasi, pelayanan publik, dan potensi desa.
+              Website resmi Pemerintah Desa Podosoko, Kecamatan Sawangan, Kabupaten Magelang, Jawa Tengah. Platform digital untuk transparansi informasi, pelayanan publik, dan potensi desa.
             </p>
           </div>
 
@@ -37,9 +37,7 @@ export default function Footer() {
               Kontak
             </h3>
             <ul className="space-y-4 text-sm text-stone-600">
-              <li>Jl. Raya Podosoko No. 1</li>
-              <li>Candimulyo, Magelang</li>
-              <li>Jawa Tengah 56191</li>
+              <li>Alamat : Bulu lor, Podosoko, Sawangan, Magelang, Jawa Tengah 56511</li>
               <li className="pt-4">
                 <a href="mailto:pemdes@podosoko.desa.id" className="hover:text-emerald-700 transition-colors border-b border-transparent hover:border-emerald-700 pb-1">
                   pemdes@podosoko.desa.id

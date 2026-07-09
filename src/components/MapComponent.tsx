@@ -49,7 +49,7 @@ interface MapProps {
 }
 
 export default function MapComponent({ markers, activeCategories }: MapProps) {
-  // Center roughly on Candimulyo, Magelang or dynamic based on data
+  // Center roughly on Sawangan, Magelang or dynamic based on data
   const defaultCenter: [number, number] = markers.length > 0 
     ? [markers[0].lat, markers[0].lng] 
     : [-7.5500, 110.8500]

@@ -11,7 +11,7 @@ export default function AboutSection({ images = [] }: { images?: string[] }) {
   const img3 = images[2] || '/about-3.jpg'
 
   return (
-    <section className="w-full bg-stone-50">
+    <section id="tentang-desa" className="w-full bg-stone-50">
       <div className="max-w-[85rem] mx-auto px-6 py-16 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
           
