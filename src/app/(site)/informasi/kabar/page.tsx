@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { client } from '../../../../sanity/lib/client'
-import { urlForImage } from '../../../../sanity/lib/image'
+import { client } from '../../../../../sanity/lib/client'
+import { urlForImage } from '../../../../../sanity/lib/image'
 
 interface Article {
   _id: string;

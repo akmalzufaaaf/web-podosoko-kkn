@@ -1,4 +1,4 @@
-import { client } from '../../../sanity/lib/client'
+import { client } from '../../../../sanity/lib/client'
 import InteractiveMapWrapper from '@/components/InteractiveMapWrapper'
 
 const MAP_MARKER_QUERY = `

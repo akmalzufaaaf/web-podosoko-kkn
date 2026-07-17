@@ -1,5 +1,5 @@
-import { client } from '../../sanity/lib/client'
-import { urlForImage } from '../../sanity/lib/image'
+import { client } from '../../../sanity/lib/client'
+import { urlForImage } from '../../../sanity/lib/image'
 import HeroSection from '@/components/HeroSection'
 import AboutSection from '@/components/AboutSection'
 import AnimatedNewsGrid from '@/components/AnimatedNewsGrid'

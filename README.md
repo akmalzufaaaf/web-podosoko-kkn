@@ -1,6 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KKN Web Project
 
-## Getting Started
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and integrated with [Sanity.io](https://www.sanity.io) for content management.
+
+## Environment Variables
+
+Before running or deploying the project, you need to set up your environment variables. 
+
+1. Copy the `.env.example` file to `.env.local` (for local development) or configure them in your deployment platform (like Vercel).
+2. Fill in the required values:
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID="your_sanity_project_id"
+NEXT_PUBLIC_SANITY_DATASET="production"
+NEXT_PUBLIC_SANITY_API_VERSION="2024-06-27"
+```
+
+You can find your Sanity Project ID in your [Sanity Manage Dashboard](https://www.sanity.io/manage) or in the `sanity.cli.ts` / `sanity.config.ts` file.
+
+## Local Development
 
 First, run the development server:
 
@@ -16,21 +33,32 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment Tutorial
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The easiest way to deploy this Next.js app is to use [Vercel](https://vercel.com/).
 
-## Learn More
+### Step 1: Push your code to GitHub
+Make sure your project is pushed to a GitHub repository.
 
-To learn more about Next.js, take a look at the following resources:
+### Step 2: Import Project on Vercel
+1. Log in to [Vercel](https://vercel.com/).
+2. Click on **Add New...** and select **Project**.
+3. Import your GitHub repository.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Step 3: Configure Environment Variables
+Before clicking Deploy, expand the **Environment Variables** section and add the variables from your `.env.example` file:
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`
+- `NEXT_PUBLIC_SANITY_DATASET`
+- `NEXT_PUBLIC_SANITY_API_VERSION`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+*Note: Ensure the dataset is set to `production` unless you have configured a different dataset.*
 
-## Deploy on Vercel
+### Step 4: Deploy
+Click **Deploy**! Vercel will build and deploy your application. 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Sanity Studio Setup for Deployment
+If you have embedded Sanity Studio within your Next.js app (usually at `/studio` or similar), you will need to add your deployed URL to the CORS origins in Sanity:
+1. Go to [Sanity Manage](https://www.sanity.io/manage).
+2. Select your project.
+3. Go to **API** -> **CORS origins**.
+4. Add your deployed Vercel URL (e.g., `https://your-app.vercel.app`) and allow credentials if needed.
