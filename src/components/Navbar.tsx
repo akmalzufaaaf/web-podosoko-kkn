@@ -24,6 +24,13 @@ const navData = [
     ],
   },
   {
+    name: "Pembangunan",
+    dropdown: [
+      { name: "Perencanaan", href: "/pembangunan/perencanaan" },
+      { name: "Transparansi", href: "/pembangunan/transparansi" },
+    ],
+  },
+  {
     name: "Peta Digital",
     href: "/peta",
   },
@@ -79,6 +86,9 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
+  const isHomepage = pathname === "/";
+  const isTransparent = isHomepage && !scrolled;
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY >= 50);
@@ -94,7 +104,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 w-full z-50">
       <nav
         className={`w-full transition-all duration-300 ease-in-out border-b ${
-          scrolled 
+          !isTransparent 
             ? "py-3 bg-white shadow-sm border-stone-200" 
             : "py-4 bg-transparent border-transparent"
         }`}
@@ -109,7 +119,7 @@ export default function Navbar() {
                 width={48}
                 height={58}
                 className={`h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
-                  !scrolled ? "drop-shadow-md" : ""
+                  isTransparent ? "drop-shadow-md" : ""
                 }`}
                 priority
               />
@@ -134,7 +144,7 @@ export default function Navbar() {
                       <Link
                         href={item.href}
                         className={`group relative text-sm font-medium transition-colors duration-300 ease-in-out py-2 ${
-                          scrolled
+                          !isTransparent
                             ? isActive
                               ? "text-emerald-600"
                               : "text-stone-600 hover:text-emerald-600"
@@ -147,13 +157,13 @@ export default function Navbar() {
                         <span 
                           className={`absolute left-0 bottom-1 w-full h-[2px] rounded-full transition-transform duration-300 ease-out origin-left ${
                             isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                          } ${scrolled ? "bg-emerald-600" : "bg-white"}`} 
+                          } ${!isTransparent ? "bg-emerald-600" : "bg-white"}`} 
                         />
                       </Link>
                     ) : (
                       <button
                         className={`group relative flex items-center gap-1 text-sm font-medium transition-colors duration-300 ease-in-out focus:outline-none py-2 ${
-                          scrolled
+                          !isTransparent
                             ? isActive || isHoveredDropdown
                               ? "text-emerald-600"
                               : "text-stone-600 hover:text-emerald-600"
@@ -177,7 +187,7 @@ export default function Navbar() {
                         <span 
                           className={`absolute left-0 bottom-1 w-full h-[2px] rounded-full transition-transform duration-300 ease-out origin-left ${
                             isActive || isHoveredDropdown ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                          } ${scrolled ? "bg-emerald-600" : "bg-white"}`} 
+                          } ${!isTransparent ? "bg-emerald-600" : "bg-white"}`} 
                         />
                       </button>
                     )}
@@ -225,7 +235,7 @@ export default function Navbar() {
                 className={`p-2 -mr-2 focus:outline-none transition-colors duration-300 ${
                   mobileMenuOpen 
                     ? "text-stone-900" 
-                    : scrolled
+                    : !isTransparent
                       ? "text-stone-900"
                       : "text-white"
                 }`}

@@ -31,6 +31,12 @@ export const deskStructure = (S: StructureBuilder) =>
                 ),
             ])
         ),
+      S.listItem()
+        .title('Pembangunan (Perencanaan & Transparansi)')
+        .child(
+          S.documentTypeList('pembangunan')
+            .title('Data Pembangunan')
+        ),
       S.divider(),
       // Dynamic Collections
       ...S.documentTypeListItems().filter(
