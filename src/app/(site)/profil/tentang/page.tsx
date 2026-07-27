@@ -87,7 +87,7 @@ export default async function ProfilSejarahPage() {
               fill 
               priority
               sizes="100vw"
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+              className="object-cover transition-all duration-1000"
             />
           </div>
         </section>

@@ -18,20 +18,29 @@ export default async function DataStatistikPage() {
 
   // Fallback to dummy data if database is empty for development purposes
   const data = statistics && statistics.length > 0 ? statistics : [
-    { _id: '1', label: 'SD/Sederajat', count: 450, category: 'Pendidikan' },
-    { _id: '2', label: 'SMP/Sederajat', count: 320, category: 'Pendidikan' },
-    { _id: '3', label: 'SMA/Sederajat', count: 210, category: 'Pendidikan' },
-    { _id: '4', label: 'S1/S2/S3', count: 85, category: 'Pendidikan' },
-    { _id: '5', label: 'Petani', count: 620, category: 'Pekerjaan' },
-    { _id: '6', label: 'PNS/TNI/Polri', count: 45, category: 'Pekerjaan' },
-    { _id: '7', label: 'Wiraswasta', count: 180, category: 'Pekerjaan' },
-    { _id: '8', label: 'Masjid', count: 4, category: 'Sarpras' },
-    { _id: '9', label: 'Musholla', count: 12, category: 'Sarpras' },
-    { _id: '10', label: 'Sekolah', count: 3, category: 'Sarpras' },
+    // Pendidikan
+    { _id: '1', label: 'Tidak Sekolah', count: 276, category: 'Pendidikan' },
+    { _id: '2', label: 'Tamat SD', count: 1850, category: 'Pendidikan' },
+    { _id: '3', label: 'Tamat SLTP', count: 539, category: 'Pendidikan' },
+    { _id: '4', label: 'Tamat SLTA', count: 327, category: 'Pendidikan' },
+    { _id: '5', label: 'Perguruan Tinggi', count: 43, category: 'Pendidikan' },
+    
+    // Pekerjaan
+    { _id: '6', label: 'Petani/Pekebun', count: 1689, category: 'Pekerjaan' },
+    { _id: '7', label: 'Belum Bekerja', count: 752, category: 'Pekerjaan' },
+    { _id: '8', label: 'Karyawan Swasta', count: 623, category: 'Pekerjaan' },
+    { _id: '9', label: 'Pelajar', count: 620, category: 'Pekerjaan' },
+    { _id: '10', label: 'Wiraswasta', count: 181, category: 'Pekerjaan' },
+    { _id: '11', label: 'Lainnya', count: 1220, category: 'Pekerjaan' },
+
+    // Agama
+    { _id: '12', label: 'Islam', count: 4714, category: 'Agama' },
+    { _id: '13', label: 'Kristen', count: 70, category: 'Agama' },
+    { _id: '14', label: 'Katolik', count: 44, category: 'Agama' },
   ];
 
-  // Extract unique categories
-  const categories = Array.from(new Set(data.map(item => item.category)));
+  // Extract unique categories (exclude Demografi from the bar charts since it's displayed as big numbers elsewhere)
+  const categories = Array.from(new Set(data.map(item => item.category))).filter(c => c !== 'Demografi');
 
   return (
     <main className="min-h-screen bg-white font-sans selection:bg-emerald-700 selection:text-white pt-24 md:pt-32 pb-16">

@@ -12,13 +12,16 @@ export interface StatisticItem {
 }
 
 export default function StatisticSummary({ data }: { data?: StatisticItem[] }) {
-  // If no data, use some brutalist fallback numbers for development
-  const displayData = data && data.length > 0 ? data.slice(0, 4) : [
-    { _id: '1', label: 'Total Penduduk', count: 2154 },
-    { _id: '2', label: 'Laki-laki', count: 1082 },
-    { _id: '3', label: 'Perempuan', count: 1072 },
-    { _id: '4', label: 'Kepala Keluarga', count: 684 }
-  ];
+  const demografiData = data?.filter(item => item.category === 'Demografi') || [];
+  
+  const displayData = demografiData.length > 0 
+    ? demografiData.slice(0, 4) 
+    : [
+        { _id: '1', label: 'Total Penduduk', count: 5021 },
+        { _id: '2', label: 'Laki-laki', count: 2550 },
+        { _id: '3', label: 'Perempuan', count: 2471 },
+        { _id: '4', label: 'Luas Wilayah (Ha)', count: 570 }
+      ];
 
   return (
     <section className="w-full bg-white border-b border-stone-300">

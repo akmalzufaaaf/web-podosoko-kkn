@@ -11,8 +11,10 @@ export const statistic = defineType({
       type: 'string',
       options: {
         list: [
+          { title: 'Demografi', value: 'Demografi' },
           { title: 'Pendidikan', value: 'Pendidikan' },
           { title: 'Pekerjaan', value: 'Pekerjaan' },
+          { title: 'Agama', value: 'Agama' },
           { title: 'Sarana & Prasarana', value: 'Sarpras' },
         ],
       },

@@ -78,7 +78,7 @@ export default function AnimatedNewsGrid({ articles }: { articles: Article[] }) 
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         priority={index === 0}
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                        className="object-cover transition-all duration-500"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-stone-400 font-medium text-sm">Image Not Found</div>
