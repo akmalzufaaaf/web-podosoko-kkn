@@ -25,18 +25,18 @@ export default async function HomePage() {
   ])
 
   // Resolve Image URLs on the server to keep Client Components clean and SSR-safe
-  const heroImageUrl = profil?.heroImage 
+  const heroImageUrl = profil?.heroImage?.asset
     ? urlForImage(profil.heroImage).url() 
     : "https://images.unsplash.com/photo-1596404768315-779872e4b9c1?q=80&w=2000&auto=format&fit=crop"
 
   const aboutImagesUrls = profil?.aboutImages 
-    ? profil.aboutImages.map((img: any) => urlForImage(img).url()) 
+    ? profil.aboutImages.filter((img: any) => img?.asset).map((img: any) => urlForImage(img).url()) 
     : []
 
   const articles = rawArticles?.map((article: any) => ({
     ...article,
     excerpt: article.body,
-    imageUrl: article.coverImage ? urlForImage(article.coverImage).url() : null
+    imageUrl: article.coverImage?.asset ? urlForImage(article.coverImage).url() : null
   })) || []
 
   return (
