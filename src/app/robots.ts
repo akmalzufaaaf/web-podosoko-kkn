@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/studio/', // Hide Sanity Studio from search engines
     },
-    sitemap: 'https://web-podosoko.vercel.app/sitemap.xml',
+    sitemap: 'https://www.podosoko.com/sitemap.xml',
   }
 }

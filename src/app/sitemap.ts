@@ -3,7 +3,7 @@ import { client } from '../../sanity/lib/client'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Use the production URL
-  const baseUrl = 'https://web-podosoko.vercel.app'
+  const baseUrl = 'https://www.podosoko.com'
 
   // Fetch all articles from Sanity to generate dynamic routes
   const articlesQuery = `*[_type == "article"] { "slug": slug.current, publishedAt }`
