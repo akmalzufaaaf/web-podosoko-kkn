@@ -112,17 +112,25 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center z-50 group">
+            <Link href="/" className="flex items-center gap-3 z-50 group">
               <Image
                 src="/logo_kab_mgl.png"
                 alt="Logo Kabupaten Magelang"
                 width={48}
                 height={58}
-                className={`h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
+                className={`h-10 md:h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
                   isTransparent ? "drop-shadow-md" : ""
                 }`}
                 priority
               />
+              <div className="flex flex-col">
+                <span className={`font-serif font-bold text-base md:text-lg leading-none transition-colors duration-300 ${isTransparent ? 'text-white drop-shadow-sm' : 'text-stone-900'}`}>
+                  Desa Podosoko
+                </span>
+                <span className={`text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold mt-1 transition-colors duration-300 ${isTransparent ? 'text-emerald-100 drop-shadow-sm' : 'text-emerald-700'}`}>
+                  Sawangan
+                </span>
+              </div>
             </Link>
 
             {/* Desktop Navigation (Ultra Minimalist) */}
