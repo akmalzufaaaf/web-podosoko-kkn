@@ -9,14 +9,14 @@ type StatisticData = {
   category: string
 }
 
-export default function StatisticChart({ data }: { data: StatisticData[] }) {
-  // Container wrapper brutalist (sharp corners, heavy borders)
-  const ChartContainer = ({ children }: { children: React.ReactNode }) => (
-    <div className="w-full h-[400px] bg-stone-50 p-6 md:p-8 border border-stone-300 flex items-center justify-center">
-      {children}
-    </div>
-  )
+// Container wrapper brutalist (sharp corners, heavy borders)
+const ChartContainer = ({ children }: { children: React.ReactNode }) => (
+  <div className="w-full h-[400px] bg-stone-50 p-6 md:p-8 border border-stone-300 flex items-center justify-center">
+    {children}
+  </div>
+)
 
+export default function StatisticChart({ data }: { data: StatisticData[] }) {
   if (!data || data.length === 0) {
     return (
       <ChartContainer>

@@ -56,7 +56,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Pemerintah Desa Podosoko.
           </p>
           <div className="text-[10px] text-stone-400 uppercase tracking-widest mt-4 md:mt-0">
-            Soft Brutalism Architecture
+            KKN-PPM UGM SAWANGAN 2026
           </div>
         </div>
       </div>

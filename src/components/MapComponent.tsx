@@ -16,7 +16,7 @@ export type MapMarkerData = {
 // Brutalist Custom Icon Generator
 const getCategoryIcon = (category: string) => {
   let bgColor = 'bg-stone-900' // Default Black
-  let textColor = 'text-white'
+  const textColor = 'text-white'
   let label = 'U' // UMKM
 
   if (category === 'UMKM') {

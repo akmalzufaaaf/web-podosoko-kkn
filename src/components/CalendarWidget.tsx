@@ -10,13 +10,15 @@ type Agenda = {
 }
 
 export default function CalendarWidget({ agendas }: { agendas: Agenda[] }) {
-  const [currentDate, setCurrentDate] = useState<Date | null>(null)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setCurrentDate(new Date())
+    setIsMounted(true)
   }, [])
 
-  if (!currentDate) return <div className="h-64 animate-pulse bg-stone-100 rounded-3xl" />
+  if (!isMounted) return <div className="h-64 animate-pulse bg-stone-100 rounded-3xl" />
+
+  const currentDate = new Date()
 
   const year = currentDate.getFullYear()
   const month = currentDate.getMonth()
@@ -24,8 +26,8 @@ export default function CalendarWidget({ agendas }: { agendas: Agenda[] }) {
   const firstDayOfMonth = new Date(year, month, 1).getDay()
   const daysInMonth = new Date(year, month + 1, 0).getDate()
   
-  const blanks = Array.from({ length: firstDayOfMonth }, (_, i) => null)
-  const days = Array.from({ length: daysInMonth }, (_, i) => i + 1)
+  const blanks = Array.from({ length: firstDayOfMonth }, () => null)
+  const days = Array.from({ length: daysInMonth }, (v, i) => i + 1)
   const cells = [...blanks, ...days]
 
   const monthNames = [
