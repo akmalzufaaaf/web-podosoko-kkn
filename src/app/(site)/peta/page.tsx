@@ -1,5 +1,25 @@
 import Script from 'next/script'
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'arcgis-embedded-map': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        'item-id'?: string;
+        theme?: string;
+        'bookmarks-enabled'?: boolean | string;
+        'heading-enabled'?: boolean | string;
+        'legend-enabled'?: boolean | string;
+        'information-enabled'?: boolean | string;
+        'share-enabled'?: boolean | string;
+        'time-zone-label-enabled'?: boolean | string;
+        center?: string;
+        scale?: string;
+        'portal-url'?: string;
+      };
+    }
+  }
+}
+
 export default function MapPage() {
   return (
     <main className="min-h-screen bg-white font-sans selection:bg-emerald-700 selection:text-white pt-24 md:pt-32 flex flex-col">
