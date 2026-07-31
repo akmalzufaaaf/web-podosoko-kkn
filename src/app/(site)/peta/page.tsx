@@ -1,24 +1,5 @@
 import Script from 'next/script'
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'arcgis-embedded-map': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        'item-id'?: string;
-        theme?: string;
-        'bookmarks-enabled'?: boolean | string;
-        'heading-enabled'?: boolean | string;
-        'legend-enabled'?: boolean | string;
-        'information-enabled'?: boolean | string;
-        'share-enabled'?: boolean | string;
-        'time-zone-label-enabled'?: boolean | string;
-        center?: string;
-        scale?: string;
-        'portal-url'?: string;
-      };
-    }
-  }
-}
+import React from 'react'
 
 export default function MapPage() {
   return (
@@ -42,21 +23,20 @@ export default function MapPage() {
       {/* 2. ArcGIS Embedded Map */}
       <section className="flex-1 w-full border-t border-stone-300 flex flex-col">
         <div className="w-full h-[600px] md:h-[800px] relative z-0 bg-stone-100 flex items-center justify-center">
-          {/* @ts-expect-error - Custom element arcgis-embedded-map */}
-          <arcgis-embedded-map 
-            style={{ height: '100%', width: '100%' }} 
-            item-id="0b63b7ddc88a404986079b0163fa3daa" 
-            theme="light" 
-            bookmarks-enabled 
-            heading-enabled 
-            legend-enabled 
-            information-enabled 
-            share-enabled 
-            time-zone-label-enabled 
-            center="110.30699145458492,-7.5172542975790035"
-            scale="18055.954822" 
-            portal-url="https://ugmid.maps.arcgis.com">
-          </arcgis-embedded-map>
+          {React.createElement('arcgis-embedded-map', {
+            style: { height: '100%', width: '100%' },
+            'item-id': "0b63b7ddc88a404986079b0163fa3daa",
+            theme: "light",
+            'bookmarks-enabled': "true",
+            'heading-enabled': "true",
+            'legend-enabled': "true",
+            'information-enabled': "true",
+            'share-enabled': "true",
+            'time-zone-label-enabled': "true",
+            center: "110.30699145458492,-7.5172542975790035",
+            scale: "18055.954822",
+            'portal-url': "https://ugmid.maps.arcgis.com"
+          })}
         </div>
       </section>
     </main>
