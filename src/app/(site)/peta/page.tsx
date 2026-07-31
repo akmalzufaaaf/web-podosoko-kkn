@@ -21,7 +21,7 @@ export default function MapPage() {
 
       {/* 2. ArcGIS Embedded Map */}
       <section className="flex-1 w-full border-t border-stone-300 flex flex-col">
-        <div className="w-full h-[400px] md:h-[500px] lg:h-[65vh] relative z-0 bg-stone-100 flex items-center justify-center">
+        <div className="w-full h-[600px] md:h-[800px] relative z-0 bg-stone-100 flex items-center justify-center">
           {/* @ts-expect-error - Custom element arcgis-embedded-map */}
           <arcgis-embedded-map 
             style={{ height: '100%', width: '100%' }} 
