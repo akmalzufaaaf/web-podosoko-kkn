@@ -39,6 +39,11 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-stone-600">
               <li>Alamat : Bulu lor, Podosoko, Sawangan, Magelang, Jawa Tengah 56511</li>
               <li className="pt-4">
+                <a href="tel:+6285228889169" className="hover:text-emerald-700 transition-colors border-b border-transparent hover:border-emerald-700 pb-1">
+                  +62 852-2888-9169
+                </a>
+              </li>
+              <li className="pt-4">
                 <a href="mailto:pemdes@podosoko.desa.id" className="hover:text-emerald-700 transition-colors border-b border-transparent hover:border-emerald-700 pb-1">
                   pemdes@podosoko.desa.id
                 </a>
