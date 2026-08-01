@@ -44,8 +44,8 @@ export default function Footer() {
                 </a>
               </li>
               <li className="pt-4">
-                <a href="mailto:pemdes@podosoko.desa.id" className="hover:text-emerald-700 transition-colors border-b border-transparent hover:border-emerald-700 pb-1">
-                  pemdes@podosoko.desa.id
+                <a href="https://www.facebook.com/share/1J9bvfqZvj/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-700 transition-colors border-b border-transparent hover:border-emerald-700 pb-1">
+                  Facebook Desa Podosoko
                 </a>
               </li>
             </ul>
