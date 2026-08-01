@@ -8,7 +8,7 @@ import AgendaDesa from '@/components/AgendaDesa'
 
 // 1. GROQ Queries
 const PROFIL_QUERY = `*[_type == "profilDesa"][0] { title, sejarah, visiMisi, heroImage, aboutImages }`
-const LATEST_ARTICLES_QUERY = `*[_type == "article"] | order(publishedAt desc)[0...3] { _id, title, slug, publishedAt, coverImage, kategori, body }`
+const LATEST_ARTICLES_QUERY = `*[_type == "article" && kategori != "UMKM"] | order(publishedAt desc)[0...3] { _id, title, slug, publishedAt, coverImage, kategori, body }`
 const LATEST_AGENDA_QUERY = `*[_type == "agenda"] | order(eventDate asc)[0...3] { _id, eventName, eventDate, location }`
 const STATISTIC_QUERY = `*[_type == "statistic"] { _id, label, count, category }`
 
