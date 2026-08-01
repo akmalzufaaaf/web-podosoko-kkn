@@ -40,6 +40,6 @@ export const deskStructure = (S: StructureBuilder) =>
       S.divider(),
       // Dynamic Collections
       ...S.documentTypeListItems().filter(
-        (listItem) => !['profilDesa', 'layananSOP'].includes(listItem.getId() as string)
+        (listItem) => !['profilDesa', 'layananSOP', 'mapMarker'].includes(listItem.getId() as string)
       ),
     ])
