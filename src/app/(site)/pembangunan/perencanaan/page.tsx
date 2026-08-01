@@ -22,7 +22,7 @@ const PERENCANAAN_QUERY = `
   }
 `
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export default async function PerencanaanPage() {
   let docs: PembangunanDoc[] = [];

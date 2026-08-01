@@ -26,7 +26,7 @@ const UMKM_QUERY = `
 `
 
 // 3. ISR Configuration
-export const revalidate = 3600 // Revalidate every hour
+export const revalidate = 60
 
 export default async function UMKMPage() {
   let articles: UMKMArticle[] = []

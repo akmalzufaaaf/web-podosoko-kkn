@@ -25,7 +25,7 @@ const ARTICLES_QUERY = `
   }
 `
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export function getExcerpt(blocks: any[]): string {
   if (!blocks || !Array.isArray(blocks)) return "";

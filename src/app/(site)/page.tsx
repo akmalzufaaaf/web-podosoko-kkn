@@ -13,7 +13,7 @@ const LATEST_AGENDA_QUERY = `*[_type == "agenda"] | order(eventDate asc)[0...3] 
 const STATISTIC_QUERY = `*[_type == "statistic"] { _id, label, count, category }`
 
 // ISR Fetch Options
-const fetchOptions = { next: { revalidate: 3600 } }
+const fetchOptions = { next: { revalidate: 60 } }
 
 export default async function HomePage() {
   // 2. Parallel Fetching with Promise.all

@@ -5,7 +5,7 @@ import { urlForImage } from '../../../../../sanity/lib/image';
 import { PortableText } from '@portabletext/react';
 
 // Revalidate every hour
-export const revalidate = 3600;
+export const revalidate = 60;
 
 // Custom Brutalist components for PortableText rendering
 const brutalistPortableTextComponents = {

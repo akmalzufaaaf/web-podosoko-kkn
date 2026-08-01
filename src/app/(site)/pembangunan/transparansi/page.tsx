@@ -19,7 +19,7 @@ const TRANSPARANSI_QUERY = `
   }
 `
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export default async function TransparansiPage() {
   let docs: PembangunanDoc[] = [];

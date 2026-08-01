@@ -7,7 +7,7 @@ import { client } from '../../../../../../sanity/lib/client';
 import { urlForImage } from '../../../../../../sanity/lib/image';
 
 // Revalidate every hour
-export const revalidate = 3600;
+export const revalidate = 60;
 
 const ARTICLE_QUERY = `
   *[_type == "article" && slug.current == $slug][0] {
