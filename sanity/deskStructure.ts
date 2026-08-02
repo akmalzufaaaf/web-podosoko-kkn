@@ -38,8 +38,27 @@ export const deskStructure = (S: StructureBuilder) =>
             .title('Data Pembangunan')
         ),
       S.divider(),
-      // Dynamic Collections
+      // Kabar Desa (Berita Utama & Kegiatan only)
+      S.listItem()
+        .title('Kabar Desa')
+        .id('kabarDesa')
+        .child(
+          S.documentList()
+            .title('Kabar Desa')
+            .filter('_type == "article" && kategori != "UMKM"')
+        ),
+      // Etalase UMKM (UMKM only)
+      S.listItem()
+        .title('Etalase UMKM')
+        .id('etalaseUmkm')
+        .child(
+          S.documentList()
+            .title('Etalase UMKM')
+            .filter('_type == "article" && kategori == "UMKM"')
+        ),
+      S.divider(),
+      // Remaining dynamic collections (exclude article since we split it above)
       ...S.documentTypeListItems().filter(
-        (listItem) => !['profilDesa', 'layananSOP', 'mapMarker'].includes(listItem.getId() as string)
+        (listItem) => !['profilDesa', 'layananSOP', 'mapMarker', 'article', 'pembangunan'].includes(listItem.getId() as string)
       ),
     ])
