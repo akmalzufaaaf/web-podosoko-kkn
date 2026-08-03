@@ -46,6 +46,30 @@ const brutalistPortableTextComponents = {
       </blockquote>
     ),
   },
+  types: {
+    image: ({ value }: any) => {
+      if (!value?.asset) return null;
+      const imageUrl = urlForImage(value).url();
+      return (
+        <figure className="my-10 md:my-16">
+          <div className="relative w-full aspect-[16/10] bg-stone-100 border border-stone-200 overflow-hidden">
+            <Image
+              src={imageUrl}
+              alt={value.alt || 'Gambar artikel'}
+              fill
+              sizes="(max-width: 768px) 100vw, 800px"
+              className="object-cover"
+            />
+          </div>
+          {value.alt && (
+            <figcaption className="mt-3 text-xs font-bold tracking-[0.2em] uppercase text-stone-400">
+              {value.alt}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
+  },
   list: {
     bullet: ({ children }: any) => (
       <ul className="list-disc pl-6 md:pl-10 text-lg md:text-xl font-medium leading-relaxed text-stone-700 mb-8 max-w-3xl space-y-4">
